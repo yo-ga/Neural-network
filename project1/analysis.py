@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from algorithm import *
 from useData import *
 from drawPlat import *
 import argparse
@@ -20,17 +21,31 @@ def parse():
 
 def main():
 	args=parse()
+	suc = False
 	if((args.examData is not None or args.trainData is not None )and args.testData is not None):
-		print ("Error: you couldn\'t use two modes in the same time.")
-		quit()
+			print ("Error: you couldn\'t use two modes in the same time.")
+			quit()
 	elif (args.testData is not None):
 		testList,group=transDataToList(args.testData)
 		args.testData.close()
-		draw(testList,group, [], len(testList[0])-1)
 		trainList, examList=cutList(testList)
 	elif (args.trainData is not None and args.examData is not None):
-		trainList=transDatatoList(args.trainData)
-		examList=transDatatoList(args.examList)
+		trainList,group=transDataToList(args.trainData)
+		examList,group1=transDataToList(args.examData)
+	while not suc:
+		vector = [float(x) for x in input("Please input the initial vector: ").split()]
+		tdata=list(trainList)
+		# print(tdata)
+		gr,trainList=divide2Group(trainList)
+		line = normalAlgo(trainList,vector,0.9)
+		# print(line)
+		if line==-1:
+			print("Please choose another initial vector.")
+			continue
+		else:
+			suc = True
+			draw(trainList,group,line, len(trainList[0])-1)
+			
 
 if __name__ == "__main__":
 	main()
