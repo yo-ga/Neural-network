@@ -23,7 +23,7 @@ def normalAlgo(trainData,vector,learning_rate):
 				final_vector= minusVector(final_vector, learning_vector, learning_rate)
 			roundBound=i+1+len(trainData)
 		i=i+1
-		if(i>10000 ):
+		if(i>1000000 ):
 			# final_vector=-1
 			break
 	return final_vector

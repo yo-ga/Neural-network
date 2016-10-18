@@ -37,7 +37,7 @@ def main():
 		tdata=list(trainList)
 		# print(tdata)
 		gr,trainList=divide2Group(trainList)
-		line = normalAlgo(trainList,vector,0.9)
+		line = normalAlgo(trainList,vector,float(input("Please input the initial learning rate: ")))
 		# print(line)
 		if line==-1:
 			print("Please choose another initial vector.")
