@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from tkinter.messagebox import showerror
 
 def normalAlgo(trainData,vector,learning_rate):
 	roundBound=len(trainData)
@@ -23,14 +24,14 @@ def normalAlgo(trainData,vector,learning_rate):
 				final_vector= minusVector(final_vector, learning_vector, learning_rate)
 			roundBound=i+1+len(trainData)
 		i=i+1
-		if(i>1000000 ):
+		if(i>1000000):
 			# final_vector=-1
 			break
 	return final_vector
 
 def dotVector(vector1,vector2):
 	if len(vector1)!=len(vector2):
-		print("Error: two vector are not in the same length.")
+		showerror(title="Error",message="two vector are not in the same length.")
 		quit()
 	sumNum=0
 	for i in range(0, len(vector1)):
@@ -40,7 +41,7 @@ def dotVector(vector1,vector2):
 def plusVector(vector1,vector2,learning_rate):
 	# print(vector1,vector2)
 	if len(vector1)!=len(vector2):
-		print("Error: two vector are not in the same length.")
+		showerror(title="Error",message="two vector are not in the same length.")
 		quit()
 	sumVec = [vector1[i]+vector2[i]*learning_rate for i in range(0,len(vector1))]
 	# print(sumVec)
@@ -49,7 +50,7 @@ def plusVector(vector1,vector2,learning_rate):
 def minusVector(vector1,vector2,learning_rate):
 	# print(vector1,vector2)
 	if len(vector1)!=len(vector2):
-		print("Error: two vector are not in the same length.")
+		showerror(title="Error",message="two vector are not in the same length.")
 		quit()
 	sumVec = [vector1[i]-vector2[i]*learning_rate for i in range(0,len(vector1))]
 	# print(sumVec)
