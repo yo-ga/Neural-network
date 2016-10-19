@@ -52,9 +52,9 @@ class MyFrame(Frame):
         suc = False
         testData=open(self.trainData.get(),'r',encoding='utf-8')
         if testData is not None:
-            testList,group=transDataToList(testData)
+            trainList,group=transDataToList(testData)
             testData.close()
-            trainList, examList=cutList(testList)
+            # trainList, examList=cutList(testList)
         while not suc:
             vector = [float(x) for x in self.vector.get().split()]
             tdata=list(trainList)
